@@ -227,44 +227,40 @@ axis([10 Fs/2 -21 21]);
 grid on;
 
 figure('Name','Filter 1 (Low Pass)','NumberTitle','off');
-freqz(a1,b1);
+freqz(b1,a1);
 
 figure('Name','Filter 2 (Band Pass)','NumberTitle','off');
-freqz(a2,b2);
+freqz(b2,a2);
 
 figure('Name','Filter 3 (Band Pass)','NumberTitle','off');
-freqz(a3,b3);
+freqz(b3,a3);
 
 figure('Name','Filter 4 (Band Pass)','NumberTitle','off');
-freqz(a4,b4);
+freqz(b4,a4);
 
 figure('Name','Filter 5 (High Pass','NumberTitle','off');
-freqz(a5,b5);
+freqz(b5,a5);
 
 function [a,b,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5]=coef()
 global Fs;
 %1.Filter
-Fp1=198/(Fs/2);
+Fp1=250/(Fs/2);
 [b1,a1]=butter(4,Fp1,'low');
 
 %2.Filter
-Fp2=[46,747]/(Fs/2);
+Fp2=[250 500]/(Fs/2);
 [b2,a2]=butter(4,Fp2,'bandpass');
 
 %3.Filter
-Fp3=[200 3000]/(Fs/2);
+Fp3=[500 2000]/(Fs/2);
 [b3,a3]=butter(4,Fp3,'bandpass');
 
 %4.Filter
-Rp4=0.5;
-Rs4=30;
-Fp4=[1070 6000]/(Fs/2);
+Fp4=[2000 4000]/(Fs/2);
 [b4,a4]=butter(4,Fp4,'bandpass');
 
 %5.Filter
-Rp5=0.5;
-Rs5=30;
-Fp5=1800/(Fs/2);
+Fp5=4000/(Fs/2);
 [b5,a5]=butter(4,Fp5,'high');
 a={a1,a2,a3,a4,a5};
 b={b1,b2,b3,b4,b5};

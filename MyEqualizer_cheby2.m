@@ -237,7 +237,7 @@ equalizer_plot();
 
 function equalizer_plot()
 global C Fs;
-[a,b]=coef();
+[a,b,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5]=coef();
 H=0;
 for i=1:5
     H=H+10^(C(i)/20)*abs(freqz(b{i},a{i},1024));
@@ -249,7 +249,23 @@ ylabel('Magnitude [dB]');
 title('Audio Equalizator');
 axis([10 Fs/2 -21 21]);
 grid on;
-function [a,b]=coef()
+
+figure('Name','Filter 1 (Low Pass)','NumberTitle','off');
+freqz(a1,b1);
+
+figure('Name','Filter 2 (Band Pass)','NumberTitle','off');
+freqz(a2,b2);
+
+figure('Name','Filter 3 (Band Pass)','NumberTitle','off');
+freqz(a3,b3);
+
+figure('Name','Filter 4 (Band Pass)','NumberTitle','off');
+freqz(a4,b4);
+
+figure('Name','Filter 5 (High Pass','NumberTitle','off');
+freqz(a5,b5);
+
+function [a,b,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5]=coef()
 global Fs;
 %1.Filter
 Fp1=198/(Fs/2);
