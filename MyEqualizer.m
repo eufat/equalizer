@@ -219,7 +219,6 @@ for i=1:5
 end
 f = Fs*[0:1023]/2048;
 
-subplot(6,1,1);
 semilogx(f,20*log10(H));
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
@@ -227,35 +226,20 @@ title('Audio Equalizator');
 axis([10 Fs/2 -21 21]);
 grid on;
 
-subplot(6,1,2);
+figure('Name','Filter 1 (Low Pass)','NumberTitle','off');
 freqz(a1,b1);
-xlabel('Normalized Frequency (\times\pi rad/sample)')
-ylabel('Magnitude (dB)')
-title('Filter 1 (Low Pass)');
 
-subplot(6,1,3);
+figure('Name','Filter 2 (Band Pass)','NumberTitle','off');
 freqz(a2,b2);
-xlabel('Normalized Frequency (\times\pi rad/sample)')
-ylabel('Magnitude (dB)')
-title('Filter 2 (Band Pass)');
 
-subplot(6,1,4);
+figure('Name','Filter 3 (Band Pass)','NumberTitle','off');
 freqz(a3,b3);
-xlabel('Normalized Frequency (\times\pi rad/sample)')
-ylabel('Magnitude (dB)')
-title('Filter 3 (Band Pass)');
 
-subplot(6,1,5);
+figure('Name','Filter 4 (Band Pass)','NumberTitle','off');
 freqz(a4,b4);
-xlabel('Normalized Frequency (\times\pi rad/sample)')
-ylabel('Magnitude (dB)')
-title('Filter 4 (Band Pass)');
 
-subplot(6,1,6);
+figure('Name','Filter 5 (High Pass','NumberTitle','off');
 freqz(a5,b5);
-xlabel('Normalized Frequency (\times\pi rad/sample)')
-ylabel('Magnitude (dB)')
-title('Filter 5 (High Pass)');
 
 function [a,b,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5]=coef()
 global Fs;
@@ -521,4 +505,3 @@ function stop_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global stop;
 stop=0;
-
