@@ -246,7 +246,7 @@ global Fs;
 %1.Filter
 Fp1=250/(Fs/2);
 [b1,a1]=butter(4,Fp1,'low');
-
+    
 %2.Filter
 Fp2=[250 500]/(Fs/2);
 [b2,a2]=butter(4,Fp2,'bandpass');
